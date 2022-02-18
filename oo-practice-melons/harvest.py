@@ -7,8 +7,8 @@ class MelonType:
     """A species of melon at a melon farm."""
 
     def __init__(
-        self, code, first_harvest, color, is_seedless, is_bestseller, name
-    ):
+        self, code, name, first_harvest, color, is_seedless, is_bestseller
+        ):
         """Initialize a melon."""
 
         self.pairings = []
@@ -42,7 +42,7 @@ def make_melon_types():
         True
         )
     musk.add_pairing("mint")
-    all_melon_types.append("musk")
+    all_melon_types.append(musk)
 
 
     cas = MelonType(
@@ -53,8 +53,9 @@ def make_melon_types():
         False,
         False
     )
-    cas.add_pairing(["strawberries", "mint"]) 
-    all_melon_types.append("cas")
+    cas.add_pairing("strawberries")
+    cas.add_pairing("mint") 
+    all_melon_types.append(cas)
     
 
     cren = MelonType(
@@ -66,7 +67,7 @@ def make_melon_types():
         False
     )
     cren.add_pairing("prosciutto")
-    all_melon_types.append("cren")
+    all_melon_types.append(cren)
 
 
     yw = MelonType(
@@ -78,21 +79,24 @@ def make_melon_types():
         True
     )
     yw.add_pairing("ice cream")
-    all_melon_types.append("yw")
+    all_melon_types.append(yw)
 
+    # for melon in all_melon_types:
+        # print(melon)
     return all_melon_types
 
 
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
     for melon in melon_types:
-        print()
+        print(f"{melon.name} pairs with")
+        for pairing in melon.pairings:
+            print(f"- {pairing}")
 
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
-
-    # Fill in the rest
+    return {melon.code:melon.name for melon in melon_types}
 
 
 ############
@@ -117,3 +121,11 @@ def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
 
     # Fill in the rest
+
+#def main():
+# make_melon_types()
+print_pairing_info(make_melon_types())
+print(make_melon_type_lookup(make_melon_types()))
+
+# if __name__ == "__main__":
+    # main()
