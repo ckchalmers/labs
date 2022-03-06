@@ -1,0 +1,3 @@
+p { font-size: 120%; color: dimgray; }
+a:link { color: gray; } a:visited { color: green; } a:hover { color: purple; } a:active { color: teal; }
+.center { display: block; margin: auto; }

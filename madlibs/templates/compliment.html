@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>A Game</title>
+</head>
+<body>
+  <form action="/game">
+    <div>Hi {{ person }}! I think you're {% for compliment in compliments: print(compliment) }} Would you like to play a game?
+      <input type="radio" id="game" name="game" value="yes">
+      <label for="game">Yes</label>
+      <input type="radio" id="game" name="game" value="no">
+      <label for="game">No</label>
+    </div>
+    <div>
+      <input type="submit" id = "submit">
+  </div>
+</form>
+</body>
+</html>
