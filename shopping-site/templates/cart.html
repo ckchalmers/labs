@@ -2,7 +2,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <table>
+    <table class="table table-striped mt-3">
+        <thead>
         <tr>
             <th>Melon Name</th>
             <th>Quantity</th>
@@ -11,19 +12,18 @@
         </tr>
         </thead>
         <tbody>
-            {% for melon in melon_objects_list %}
+        {% for melon in melon_objects_list %}
         <tr>
             <td>{{ melon.common_name }}</td>
             <td>{{ melon.quantity }}</td>
-            <td>${{ melon.price }}0</td>
-            <td>${{ melon.total_cost }}0</td>
+            <td>{{ melon.price_str() }}</td>
+            <td>{{ melon.total_price() }}</td>
         </tr>
-            {% endfor %}
-
+        {% endfor %}
         </tbody>
     </table>
 
-    <h3>Total: ${{ order_total }}0</h3>
+    <h3>Total: {{ "${:.2f}".format(order_total) }}</h3>
 
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 
