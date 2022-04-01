@@ -58,7 +58,7 @@ function orderMelons(evt) {
   //     });
   // });
       document.querySelector('#order-form').addEventListener('submit', evt => {
-        evt.preventDefault();
+        orderMelons(evt);
 
       const formInputs = {
         qty: document.querySelector('#qty-field').value,
@@ -73,12 +73,20 @@ function orderMelons(evt) {
         },
       })
         .then(response => response.json())
-        .then(responseJson => {
-          document.querySelector('#order-status').innerText = responseJson.msg;
+        .then(responseJson => {if (responseJson.code === "ERROR") 
+        { document.querySelector('#order-status').classList.add('order-error'); 
+          document.querySelector('#order-status').innerText = responseJson.msg}
+          else {
+          document.querySelector('#order-status').innerText = responseJson.msg};
           alert(responseJson.msg);
-          // console.dir(responseData.msg)
+          //console.dir(responseJson.msg);
         });
+
     });
   // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
-}
+  // let div_error = document.querySelector('#order-status');
+  // if (responseJson.code === "ERROR") {
+  //   div_error.classList.add('order-error')
+  };
+
 document.querySelector('#order-form').addEventListener('submit', orderMelons);
