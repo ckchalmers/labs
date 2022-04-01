@@ -83,10 +83,22 @@ function orderMelons(evt) {
         });
 
     });
-  // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
-  // let div_error = document.querySelector('#order-status');
-  // if (responseJson.code === "ERROR") {
-  //   div_error.classList.add('order-error')
   };
 
 document.querySelector('#order-form').addEventListener('submit', orderMelons);
+
+function get_dog_pic(evt) {
+  evt.preventDefault();
+
+  const url = 'https://dog.ceo/api/breeds/image/random';
+
+  fetch(url)
+  .then(response => response.json())
+  .then(responseData => { const picUrl = responseData.message;
+    document.querySelector('#dog-image').insertAdjacentHTML('beforeend', `<div><img src=${picUrl}></div>`);
+  })}
+
+  document.querySelector('#dog-image').addEventListener('click',
+    get_dog_pic);
+
+// {/* <img src="img_girl.jpg" width="500" height="600"></img> */}

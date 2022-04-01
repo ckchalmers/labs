@@ -82,5 +82,12 @@ def order_melons():
 #         "success": True, 
 #         "status": f"Your order of {amount} {melon_type} melons has been confirmed"}
 
+@app.route('/dogs.json')
+def get_dog_pic():
+    """Get a picture of a dog to display on the site"""
+    message = request.json.get('message')
+    status = request.json.get('status')
+    return jsonify({'message': message})
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
